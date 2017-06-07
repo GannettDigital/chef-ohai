@@ -1,7 +1,11 @@
-# A sample Gemfile
-source "https://rubygems.org"
+# This gemfile provides additional gems for testing and releasing this cookbook
+# It is meant to be installed on top of ChefDK which provides the majority
+# of the necessary gems for testing this cookbook
+#
+# Run 'chef exec bundle install' to install these dependencies
 
-gem 'librarian-chef'
-gem 'test-kitchen', '1.0.0.beta.3'
-gem 'kitchen-vagrant'
+source 'https://rubygems.org'
 
+gem 'tomlrb'
+gem 'stove'
+gem 'community_cookbook_releaser'

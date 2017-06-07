@@ -1,23 +1,15 @@
-name             "ohai"
-maintainer       "Opscode, Inc"
-maintainer_email "cookbooks@opscode.com"
-license          "Apache 2.0"
-description      "Distributes a directory of custom ohai plugins"
+name 'ohai'
+maintainer 'Chef Software, Inc.'
+maintainer_email 'cookbooks@chef.io'
+license 'Apache-2.0'
+description 'Provides custom resources for installing Ohai hints and plugins'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "2.0.2"
+version '5.1.0'
 
-recipe "ohai::default", "Distributes a directory of custom ohai plugins"
+%w(ubuntu debian centos redhat amazon scientific fedora oracle suse opensuse opensuseleap freebsd windows zlinux).each do |os|
+  supports os
+end
 
-attribute "ohai/plugin_path",
-  :display_name => "Ohai Plugin Path",
-  :description => "Distribute plugins to this path.",
-  :type => "string",
-  :required => "optional",
-  :default => "/etc/chef/ohai_plugins"
-
-attribute "ohai/plugins",
-  :display_name => "Ohai Plugin Sources",
-  :description => "Read plugins from these cookbooks and paths",
-  :type => "hash",
-  :required => "optional",
-  :default => {'ohai' => 'plugins'}
+source_url 'https://github.com/chef-cookbooks/ohai'
+issues_url 'https://github.com/chef-cookbooks/ohai/issues'
+chef_version '>= 12.7' if respond_to?(:chef_version)
